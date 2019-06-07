@@ -1,5 +1,7 @@
 package com.activeedge.test;
 
+import java.util.Arrays;
+
 public class SimpleJavaProgram {
 
   static  void sortArray( int [] fromArray){
@@ -18,36 +20,45 @@ public class SimpleJavaProgram {
 
         }
 
-
-
-
     }
-    private static int findLeastNonOccuring(int [] sortedArray){
-      int i = 0;
-        int diff = 0;
-        int result =  0;
-        for( ; i < sortedArray.length; i++) {
 
-            while (i + 1 < sortedArray.length){
-                 diff = sortedArray[i + 1 ] - sortedArray[i];
-            }
+    static int solution( int [] sortedArray) {
 
-            if(diff == 1 && diff != 0){
-                continue;
-            }
-            else {
-               result = result + 1;
-
-           }
-
-
+        int maxValue = Arrays.stream(sortedArray).max().getAsInt();
+        if (maxValue < 1)
+        {
+            return 1;
         }
-        if (result < 0 ) return 1;
+        if (sortedArray.length == 1) {
+            if (sortedArray[0] == 1) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+        int i = 0;
+        int[] largeArray = new int[maxValue];
 
-        return result;
+        for (i = 0; i < sortedArray.length; i++) {
+            if (sortedArray[i] > 0) {
+                if (largeArray[sortedArray[i] - 1] != 1)
+                {
+                    largeArray[sortedArray[i] - 1] = 1;
+                }
+            }
+        }
+        for (i = 0; i < sortedArray.length; i++)
+        {
+            if (largeArray[i] == 0) {
+                return i + 1;
+            }
+        }
+
+        return i+2;
     }
+
     public static void main(String[] args) {
-        int[] x = new int[]{1,3,6,4,1,2};
+        int[] x = new int[]{5, -1, -3};
 
         for (int i = 0; i < x.length; i++){
             System.out.println(x[i]);
@@ -61,6 +72,6 @@ public class SimpleJavaProgram {
 
         }
         System.out.println("Smallest non occuring");
-        System.out.println(findLeastNonOccuring(x));
+        System.out.println(solution(x));
     }
 }
