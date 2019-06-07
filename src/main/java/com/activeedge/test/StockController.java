@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api/stocks")
 public class StockController {
-    StockService
+//    StockService
 
 
     public void createStock(Stock stock){
