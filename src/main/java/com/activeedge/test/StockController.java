@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/api/stocks")
 public class StockController {
@@ -30,9 +32,9 @@ public class StockController {
 
     }
     @RequestMapping(method = RequestMethod.GET, path = "/api/stocks")
-    public String getAllStocks(){
+    public List<Stock> getAllStocks(){
 
-        return "stocks";
+        return stockService.getAllStocks();
     }
     @RequestMapping(method = RequestMethod.GET, path = "api/stocks/{id}")
     public void getStock(int stockId){
