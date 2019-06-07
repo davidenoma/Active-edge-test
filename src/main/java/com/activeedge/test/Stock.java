@@ -11,8 +11,11 @@ public class Stock {
     private int currentPrice;
     private Timestamp createDate;
     private Timestamp lastUpdate;
+    public Stock(){
 
-    public Stock(int id, String name, int currentPrice/* Timestamp lastUpdate */) {
+    }
+
+    public Stock(int id, String name, int currentPrice) {
         this.id = id;
         this.name = name;
         this.currentPrice = currentPrice;
