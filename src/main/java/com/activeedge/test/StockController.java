@@ -34,7 +34,7 @@ public class StockController {
 
         return "stocks";
     }
-    @RequestMapping(method = RequestMethod.GET, path = "api/stocks/id")
+    @RequestMapping(method = RequestMethod.GET, path = "api/stocks/{id}")
     public void getStock(int stockId){
 
 
