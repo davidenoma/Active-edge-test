@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/stocks")
+@RequestMapping(path = "/")
 public class StockController {
 //    StockService
     @Autowired
     public StockService stockService;
 
     public StockController(StockService stockService){
-        this.stockService = stockService;
+        this.stockService = new StockService();
     }
 
 
@@ -28,7 +28,7 @@ public class StockController {
 
 
     }
-    @RequestMapping(method = RequestMethod.GET, path = "/api/stocks")
+    @RequestMapping(method = RequestMethod.GET)
     public List<Stock> getAllStocks(){
 
         return stockService.getAllStocks();
