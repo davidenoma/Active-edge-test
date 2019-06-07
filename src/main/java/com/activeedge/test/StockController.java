@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api/stocks")
 public class StockController {
+    StockService
+
 
     public void createStock(Stock stock){
 
@@ -15,11 +17,14 @@ public class StockController {
 
 
     }
-    @RequestMapping(method = RequestMethod.GET, path = "/")
-    public void getAllStocks(){
+    @RequestMapping(method = RequestMethod.GET, path = "/api/stocks")
+    public String getAllStocks(){
 
+        return "stocks";
     }
+    @RequestMapping(method = RequestMethod.GET, path = "api/stocks/id")
     public void getStock(int stockId){
+
 
     }
 }

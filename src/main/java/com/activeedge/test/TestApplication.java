@@ -18,13 +18,7 @@ public class TestApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Stock> stocks = new ArrayList<>();
-        stocks.add(new Stock(1, "Cocoa ", 100));
-        stocks.add(new Stock(2, "Milk ", 40));
-        stocks.add(new Stock(3, "Cement ", 200));
-        stocks.add(new Stock(4, "Flour ", 50));
-        stocks.add(new Stock(5, "Sugar ", 30));
-        stocks.add(new Stock(6, "Salt ", 20));
+//            new StockService().createAllStocks();
 
 
 
