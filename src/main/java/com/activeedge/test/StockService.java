@@ -2,7 +2,9 @@ package com.activeedge.test;
 
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,13 +27,27 @@ public class StockService {
         stocks.add(new Stock(6, "Salt ", 20));
         return stocks;
     }
-    List<Stock> getAllStocks(){
+    public List<Stock> getAllStocks(){
         return stocks;
     }
-    Stock getStock(int stockId){
+    public Stock getStock(int stockId){
 
         return stocks.get(stockId);
     }
+    public void updateStock(int stockId, String name, int currentPrice){
+       Stock stock =  stocks.get(stockId);
+       stock.setId(stockId);
+       stock.setName(name);
+       stock.setCurrentPrice(currentPrice);
+       stock.setLastUpdate(new Timestamp(new Date().getTime()));
+    }
+
+    public Stock createStock(String name, int currentPrice){
+      int id =  stocks.size();
+       Stock createdStock =   new Stock(id, name, currentPrice);
+       return createdStock;
+    }
+
 
 
 

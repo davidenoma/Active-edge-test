@@ -18,7 +18,7 @@ public class Stock {
         this.currentPrice = currentPrice;
         this.createDate = new Timestamp( new Date().getTime());
         System.out.println("Creation time: "+ this.createDate.toString());
-        this.lastUpdate = lastUpdate;
+        this.lastUpdate = createDate;
     }
 
 
