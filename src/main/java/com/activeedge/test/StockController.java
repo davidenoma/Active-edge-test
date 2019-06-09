@@ -2,6 +2,7 @@ package com.activeedge.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,21 +17,21 @@ public class StockController {
 
 
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, path = "/api/stocks" , consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public String createStock( @PathVariable("stockName") String stockName,
-                             @PathVariable("stockPrice") int stockPrice){
+    public ResponseEntity<Stock> createStock(@RequestBody Stock stock  ){
 
-        return stockService.createStock(stockName,stockPrice).toString();
+        stockService.createStock(stock.getName(),stock.getCurrentPrice());
+        return new ResponseEntity<>(stock, HttpStatus.CREATED);
 
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
-    public String updateStocks(@PathVariable("id") int stockId,
-                               @PathVariable("newName") String newName,
-                              @PathVariable("newPrice") int newPrice){
-        
-        return stockService.updateStock(stockId,newName,newPrice).toString();
+    @RequestMapping(method = RequestMethod.PUT, path = "api/stocks/{id}", consumes = "application/json")
+    public Stock updateStocks(@PathVariable("id") int stockId, @RequestBody Stock stock){
+
+      return stockService.updateStock(stockId,stock) ;
+
+
     }
 
     @RequestMapping(method = RequestMethod.GET, path="/api/stocks")

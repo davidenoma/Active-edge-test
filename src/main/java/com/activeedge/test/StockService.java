@@ -36,22 +36,25 @@ public class StockService {
 
         return stocks.get(stockId);
     }
-    public Stock updateStock(int stockId, String name, int currentPrice){
-       Stock stock =  stocks.get(stockId);
+    public Stock updateStock(int stockId, Stock stock){
+       if(stockId == stocks.size()){
+           stockId -= 1;
+       }
+        Stock updateStock =  stocks.get(stockId);
         System.out.println("Before"+ stock.toString());
-       stock.setId(stockId);
-       stock.setName(name);
-       stock.setCurrentPrice(currentPrice);
-       stock.setLastUpdate(new Timestamp(new Date().getTime()));
+
+       updateStock.setName(stock.getName());
+       updateStock.setCurrentPrice(stock.getCurrentPrice());
+       updateStock.setLastUpdate(new Timestamp(new Date().getTime()));
         System.out.println("After "+ stock.toString());
-        return stock;
+        return updateStock;
     }
 
     public Stock createStock(String name, int currentPrice){
 
-        int id =  stocks.size();
-        Stock createdStock =   new Stock(id, name, currentPrice);
+        int id =  stocks.size()+1;
 
+        Stock createdStock =   new Stock(id, name, currentPrice);
         stocks.add(createdStock);
         System.out.println("latest Stock = " + stocks.get(stocks.size() -1 ));
         System.out.println(createdStock.toString());

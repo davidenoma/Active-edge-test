@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class Stock {
 
+    public Stock(){
 
+    }
     private int id;
     private String name;
     private int currentPrice;
     private Timestamp createDate;
     private Timestamp lastUpdate;
-    public Stock(){
 
-    }
 
     @Override
     public String toString() {
