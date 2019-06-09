@@ -36,7 +36,7 @@ public class SimpleJavaProgram {
                 return 1;
             }
         }
-        int i = 0;
+        int i;
         int[] largeArray = new int[maxValue];
 
         for (i = 0; i < sortedArray.length; i++) {

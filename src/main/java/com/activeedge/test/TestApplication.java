@@ -15,7 +15,7 @@ public class TestApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //            new StockService().createAllStocks();
-        StockService stockService = new StockService();
+      //  StockService stockService = new StockService();
 
 
 

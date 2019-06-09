@@ -11,7 +11,7 @@ import java.util.List;
 public class StockService {
 
     private static List<Stock>  stocks = new ArrayList<>();
-    StockService(){
+    public StockService(){
         createAllStocks();
     }
 
