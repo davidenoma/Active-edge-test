@@ -1,5 +1,6 @@
 package com.activeedge.test;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -9,8 +10,8 @@ import java.util.List;
 
 @Service
 public class StockService {
-
-    private static List<Stock>  stocks = new ArrayList<>();
+    @Autowired
+    private static List<Stock>  stocks;
 
     public StockService(){
         createAllStocks();
@@ -19,7 +20,7 @@ public class StockService {
 
    public List<Stock> createAllStocks(){
 
-
+        stocks = new ArrayList<>();
         stocks.add(new Stock(1, "Cocoa ", 100));
         stocks.add(new Stock(2, "Milk ", 40));
         stocks.add(new Stock(3, "Cement ", 200));
@@ -47,8 +48,12 @@ public class StockService {
     }
 
     public Stock createStock(String name, int currentPrice){
+
         int id =  stocks.size();
         Stock createdStock =   new Stock(id, name, currentPrice);
+
+        stocks.add(createdStock);
+        System.out.println("latest Stock = " + stocks.get(stocks.size() -1 ));
         System.out.println(createdStock.toString());
        return createdStock;
     }

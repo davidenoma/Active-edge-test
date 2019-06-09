@@ -8,6 +8,9 @@ public class StockControllerTest {
 
     @Test
     public void createStock() {
+        StockService stockService = new StockService();
+        Stock testStock = stockService.createStock("Oil", 5000);
+        assertEquals(stockService.getAllStocks().get(stockService.getAllStocks().size()-1), testStock );
     }
 
     @Test
