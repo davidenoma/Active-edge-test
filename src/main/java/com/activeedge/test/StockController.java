@@ -20,7 +20,10 @@ public class StockController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createStock(Stock stock){
+    public Stock createStock( String stockName, int stockPrice){
+
+
+        return stockService.createStock(stockName,stockPrice);
 
     }
     @RequestMapping(method = RequestMethod.PUT)
@@ -28,12 +31,12 @@ public class StockController {
 
 
     }
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, path="/api/stocks")
     public List<Stock> getAllStocks(){
 
         return stockService.getAllStocks();
     }
-    @RequestMapping(method = RequestMethod.GET, path = "api/stocks/{id}")
+    @RequestMapping(method = RequestMethod.GET, path = "/api/stocks/{id}")
     public Stock getStock(@PathVariable(value = "stockId")int stockId){
 
     return stockService.getStock(stockId);

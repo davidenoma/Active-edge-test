@@ -43,8 +43,9 @@ public class StockService {
     }
 
     public Stock createStock(String name, int currentPrice){
-      int id =  stocks.size();
+        int id =  stocks.size();
        Stock createdStock =   new Stock(id, name, currentPrice);
+        System.out.println();
        return createdStock;
     }
 

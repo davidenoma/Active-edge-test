@@ -15,6 +15,17 @@ public class Stock {
 
     }
 
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", currentPrice=" + currentPrice +
+                ", createDate=" + createDate +
+                ", lastUpdate=" + lastUpdate +
+                '}';
+    }
+
     public Stock(int id, String name, int currentPrice) {
         this.id = id;
         this.name = name;
