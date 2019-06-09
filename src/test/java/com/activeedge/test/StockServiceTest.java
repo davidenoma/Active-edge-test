@@ -15,6 +15,7 @@ public class StockServiceTest {
     @Test
     public void createAllStocks() {
         List allStocks = new StockService().createAllStocks();
+        assertEquals(allStocks, new StockService().createAllStocks());
 
     }
     @Test
@@ -30,6 +31,9 @@ public class StockServiceTest {
     }
     @Test
     public void updateStock(){
-
+        List <Stock>allStocks = new StockService().createAllStocks();
+       Stock dummy =  allStocks.get(0);
+       dummy.setCurrentPrice(500);
+        assertEquals(500, dummy.getCurrentPrice() );
     }
 }
