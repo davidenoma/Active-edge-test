@@ -27,9 +27,9 @@ public class StockController {
 
     }
     @RequestMapping(method = RequestMethod.PUT)
-    public void updateStocks(int stockId){
-
-
+    public String updateStocks(int stockId, String newName, int newPrice){
+        
+        return stockService.updateStock(stockId,newName,newPrice).toString();
     }
     @RequestMapping(method = RequestMethod.GET, path="/api/stocks")
     public List<Stock> getAllStocks(){
