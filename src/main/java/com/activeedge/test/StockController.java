@@ -13,31 +13,34 @@ public class StockController {
     @Autowired
     public StockService stockService;
 
-    public StockController(StockService stockService){
-        this.stockService = new StockService();
-    }
+
 
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public Stock createStock( String stockName, int stockPrice){
+    public String createStock( @PathVariable("stockName") String stockName,
+                             @PathVariable("stockPrice") int stockPrice){
 
-
-        return stockService.createStock(stockName,stockPrice);
+        return stockService.createStock(stockName,stockPrice).toString();
 
     }
+
     @RequestMapping(method = RequestMethod.PUT)
-    public String updateStocks(int stockId, String newName, int newPrice){
+    public String updateStocks(@PathVariable("id") int stockId,
+                               @PathVariable("newName") String newName,
+                              @PathVariable("newPrice") int newPrice){
         
         return stockService.updateStock(stockId,newName,newPrice).toString();
     }
+
     @RequestMapping(method = RequestMethod.GET, path="/api/stocks")
     public List<Stock> getAllStocks(){
 
-        return stockService.getAllStocks();
+        return this.stockService.getAllStocks();
     }
+
     @RequestMapping(method = RequestMethod.GET, path = "/api/stocks/{id}")
-    public Stock getStock(@PathVariable(value = "stockId")int stockId){
+    public Stock getStock(@PathVariable("id")int stockId){
 
     return stockService.getStock(stockId);
     }

@@ -11,6 +11,7 @@ import java.util.List;
 public class StockService {
 
     private static List<Stock>  stocks = new ArrayList<>();
+
     public StockService(){
         createAllStocks();
     }
@@ -40,7 +41,6 @@ public class StockService {
        stock.setId(stockId);
        stock.setName(name);
        stock.setCurrentPrice(currentPrice);
-
        stock.setLastUpdate(new Timestamp(new Date().getTime()));
         System.out.println("After "+ stock.toString());
         return stock;

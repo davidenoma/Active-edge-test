@@ -17,21 +17,24 @@ public class Stock {
 
     @Override
     public String toString() {
-        return "Stock{" +
+        return "Stock\n{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", currentPrice=" + currentPrice +
-                ", createDate=" + createDate +
-                ", lastUpdate=" + lastUpdate +
-                '}';
+                ",\n" +
+                        " currentPrice=" + currentPrice +
+                ",\n" +
+                        " createDate=" + createDate +
+                ",\n" +
+                        " lastUpdate=" + lastUpdate +
+                "}"+"\n";
     }
 
     public Stock(int id, String name, int currentPrice) {
         this.id = id;
         this.name = name;
         this.currentPrice = currentPrice;
+
         this.createDate = new Timestamp( new Date().getTime());
-        System.out.println("Creation time: "+ this.createDate.toString());
         this.lastUpdate = createDate;
     }
 
